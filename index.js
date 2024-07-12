@@ -12,6 +12,9 @@ const sequelize = new Sequelize({
     storage: './database.sqlite3'
 })
 
+// "Sync" our sequelize with our database
+sequelize.sync();
+
 // Server Configuration
 
 // PORT: Where the server app will run (default: 3000)
