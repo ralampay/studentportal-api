@@ -8,5 +8,11 @@
     "commit-checkpoint": "git add --all && git commit -m 'checkpoint' && git push origin master"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "expressjs": "^1.0.1",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  }
 }
