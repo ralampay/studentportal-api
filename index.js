@@ -15,6 +15,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+// Services
+app.get("/", (req, res) => {
+
+    let payload = { message: "Welcome to student portal!" };
+    res.json(payload);
+})
+
 // Run the server
 app.listen(port, () => {
     console.log(`Server running at port ${port}`);
