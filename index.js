@@ -12,6 +12,19 @@ const sequelize = new Sequelize({
     storage: './database.sqlite3'
 })
 
+// 2. Define our schema
+class Course extends Model {}
+
+Course.init({
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    }
+}, { sequelize, modelName: 'course' })
+
+// { sequelize } --> { sequelize: sequelize }
+
 // "Sync" our sequelize with our database
 sequelize.sync();
 
