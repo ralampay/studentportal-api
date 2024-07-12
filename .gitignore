@@ -2,3 +2,4 @@ node_modules/
 public/assets/
 db.json
 .env
+*.sqlite3

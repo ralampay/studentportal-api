@@ -4,6 +4,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
+// Database Configuration
+
+// 1. Create Sequelize instance
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database.sqlite3'
+})
+
 // Server Configuration
 
 // PORT: Where the server app will run (default: 3000)
