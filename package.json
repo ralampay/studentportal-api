@@ -1,0 +1,12 @@
+{
+  "name": "studentportal-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "commit-checkpoint": "git add --all && git commit -m 'checkpoint' && git push origin master"
+  },
+  "author": "",
+  "license": "ISC"
+}
