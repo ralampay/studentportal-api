@@ -14,3 +14,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+
+// Run the server
+app.listen(port, () => {
+    console.log(`Server running at port ${port}`);
+})
