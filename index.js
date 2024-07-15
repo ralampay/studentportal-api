@@ -2,15 +2,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
 // Database Configuration
 
 // 1. Create Sequelize instance
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: './database.sqlite3'
-})
+const sequelize = require('./config/database');
+// import sequelize from "./config/database";
 
 // 2. Define our schema
 class Course extends Model {}
@@ -20,13 +18,16 @@ Course.init({
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
+    },
+    description: {
+        type: DataTypes.TEXT
     }
 }, { sequelize, modelName: 'course' })
 
 // { sequelize } --> { sequelize: sequelize }
 
 // "Sync" our sequelize with our database
-sequelize.sync();
+sequelize.sync({ alter: true });
 
 // Server Configuration
 
