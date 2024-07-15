@@ -25,11 +25,11 @@ const app = express();
 const CoursesController = require('./src/controllers/CoursesController');
 const AuthController = require('./src/controllers/AuthController');
 
-app.use(CoursesController);
-app.use(AuthController);
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(CoursesController);
+app.use(AuthController);
 
 // Services
 app.get("/", (req, res) => {
