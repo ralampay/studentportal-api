@@ -22,9 +22,11 @@ const port = 3000;
 const app = express();
 
 // MIDDLEWARE
-const courses = require('./src/controllers/courses');
+const CoursesController = require('./src/controllers/CoursesController');
+const AuthController = require('./src/controllers/AuthController');
 
-app.use(courses);
+app.use(CoursesController);
+app.use(AuthController);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
