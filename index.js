@@ -2,7 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { Model, DataTypes } = require('sequelize');
 
 // Database Configuration
 
@@ -11,20 +10,7 @@ const sequelize = require('./config/database');
 // import sequelize from "./config/database";
 
 // 2. Define our schema
-class Course extends Model {}
-
-Course.init({
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
-    description: {
-        type: DataTypes.TEXT
-    }
-}, { sequelize, modelName: 'course' })
-
-// { sequelize } --> { sequelize: sequelize }
+const Course = require('./src/models/Course');
 
 // "Sync" our sequelize with our database
 sequelize.sync({ alter: true });
@@ -36,6 +22,9 @@ const port = 3000;
 const app = express();
 
 // MIDDLEWARE
+const courses = require('./src/controllers/courses');
+
+app.use(courses);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
