@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "load-mock-data": "node tasks/mockData.js",
     "commit-checkpoint": "git add --all && git commit -m 'checkpoint' && git push origin master"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "sequelize": "^6.37.3",
