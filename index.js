@@ -9,8 +9,13 @@ const cors = require('cors');
 const sequelize = require('./config/database');
 // import sequelize from "./config/database";
 
-// 2. Define our schema
+// 2. Schema
 const Course = require('./src/models/Course');
+const Student = require('./src/models/Student');
+
+// 3. Define associations
+Course.hasMany(Student, { foreignKey: 'courseId' });
+Student.belongsTo(Course, { foreignKey: 'courseId' });
 
 // "Sync" our sequelize with our database
 sequelize.sync({ alter: true });
