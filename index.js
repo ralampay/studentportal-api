@@ -28,12 +28,14 @@ const app = express();
 
 // MIDDLEWARE
 const CoursesController = require('./src/controllers/CoursesController');
+const StudentsController = require('./src/controllers/StudentsController');
 const AuthController = require('./src/controllers/AuthController');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(CoursesController);
+app.use(StudentsController);
 app.use(AuthController);
 
 // Services
