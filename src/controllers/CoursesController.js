@@ -1,5 +1,6 @@
 const express = require('express');
 const Course = require('../models/Course');
+const ValidateCreate = require('../operations/courses/ValidateCreate');
 const router = express.Router();
 
 router.get("/courses", async (req, res) => {
@@ -9,9 +10,17 @@ router.get("/courses", async (req, res) => {
 });
 
 router.post("/courses", async (req, res) => {
-    let course = await Course.create(req.body);
 
-    res.json(course);
+    let result = ValidateCreate(req.body);
+
+    if (result.isValid) {
+        let course = await Course.create(req.body);
+
+        res.json(course);
+    } else {
+        // Return unprocessable_entity if we have errors
+        res.status(422).json(result.payload);
+    }
 });
 
 router.get("/courses/:id", async (req, res) => {
