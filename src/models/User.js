@@ -12,6 +12,10 @@ User.init({
     passwordHash: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, { sequelize, modelName: 'user' })
 
