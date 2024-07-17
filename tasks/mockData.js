@@ -47,6 +47,7 @@ const loadUsers = async () => {
 
     await User.create({
         username: 'admin',
+        role: 'admin',
         passwordHash: await hashPassword('password')
     })
 }
