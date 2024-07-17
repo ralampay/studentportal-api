@@ -1,6 +1,8 @@
 const { faker } = require('@faker-js/faker');
 const Course = require('../src/models/Course');
 const Student = require('../src/models/Student');
+const User = require('../src/models/User');
+const { hashPassword } = require('../src/helpers/AppHelper');
 
 // Delete all courses
 console.log("Deleting all courses...");
@@ -38,4 +40,17 @@ const loadStudents = async () => {
 
 loadStudents().then(() => {
     console.log("Done loading students...");
+})
+
+const loadUsers = async () => {
+    await User.destroy({ truncate: true });
+
+    await User.create({
+        username: 'admin',
+        passwordHash: await hashPassword('password')
+    })
+}
+
+loadUsers().then(() => {
+    console.log("Done loading users");
 })

@@ -12,6 +12,7 @@ const sequelize = require('./config/database');
 // 2. Schema
 const Course = require('./src/models/Course');
 const Student = require('./src/models/Student');
+const User = require('./src/models/User');
 
 // 3. Define associations
 Course.hasMany(Student, { foreignKey: 'courseId' });
