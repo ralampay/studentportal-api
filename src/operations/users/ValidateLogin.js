@@ -45,3 +45,5 @@ const ValidateLogin = async (username, password) => {
         user
     }
 }
+
+module.exports = ValidateLogin;
