@@ -3,15 +3,25 @@ const Course = require('../models/Course');
 const ValidateCreate = require('../operations/courses/ValidateCreate');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
+const authenticateUser = require('../middleware/AuthenticateUser');
+
+// middleware to authenticate user
+router.use(authenticateUser);
 
 router.get("/courses", async (req, res) => {
-    console.log("Headers:")
-    console.log(req.headers)
-    let token = req.headers['authorization'].split(' ')[1]
-    console.log(`token: ${token}`)
-    let user = jwt.verify(token, 'secret');
-    console.log('User:')
-    console.log(user)
+    // console.log("Headers:")
+    // console.log(req.headers)
+    // // authorization: Bearer 1234
+    // let token = req.headers['authorization'].split(' ')[1]
+    // console.log(`token: ${token}`)
+    // let user = jwt.verify(token, 'secret');
+    // console.log('User:')
+    // console.log(user)
+    let user = req.user;
+
+    console.log('User:');
+    console.log(user);
+
     let courses = await Course.findAll();
 
     res.json(courses);

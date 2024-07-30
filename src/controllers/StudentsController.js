@@ -2,6 +2,10 @@ const express = require('express');
 const Student = require('../models/Student');
 const Course = require('../models/Course');
 const router = express.Router();
+const authenticateUser = require('../middleware/AuthenticateUser');
+
+// middleware to authenticate user
+router.use(authenticateUser);
 
 router.get("/students", async (req, res) => {
     console.log("URL Parameters:");
