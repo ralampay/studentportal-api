@@ -35,9 +35,9 @@ const AuthController = require('./src/controllers/AuthController');
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(AuthController);
 app.use(CoursesController);
 app.use(StudentsController);
-app.use(AuthController);
 
 // Services
 app.get("/", (req, res) => {
